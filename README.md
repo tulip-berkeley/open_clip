@@ -40,7 +40,7 @@ TULIP-G-16-384 | 384 | [Download](https://s3.us-west-1.wasabisys.com/tulip/tulip
 
 ## Inference
 
-You can use OpenCLIP + TULIP for inference with the following code snippet:
+You can use TULIP for inference with the following code snippet:
 
 ```python
 import torch
