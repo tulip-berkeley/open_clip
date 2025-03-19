@@ -646,6 +646,15 @@ _PRETRAINED = {
     "ViTamin-XL-384": dict(
         datacomp1b=_pcfg(hf_hub='jienengchen/ViTamin-XL-384px/pytorch_model.bin'),
     ),
+    "TULIP-so400m-14-384": dict(
+        webli=_slpcfg(hf_hub='timm/ViT-SO400M-14-SigLIP/'),
+    ),
+    "TULIP-G-16-384": dict(
+        webli=_slpcfg(hf_hub='timm/ViT-SO400M-14-SigLIP/'),
+    ),
+    "TULIP-B-16-224": dict(
+        webli=_slpcfg(hf_hub='timm/ViT-SO400M-14-SigLIP/'),
+    ),
 }
 
 _PRETRAINED_quickgelu = {}

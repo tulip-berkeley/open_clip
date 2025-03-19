@@ -180,6 +180,7 @@ def load_checkpoint(
         strict: bool = True,
         weights_only: bool = True,
         device='cpu',
+        tulip=False,
 ):
     if Path(checkpoint_path).suffix in ('.npz', '.npy'):
         # Separate path loading numpy big_vision (SigLIP) weights
@@ -215,6 +216,11 @@ def load_checkpoint(
 
     resize_pos_embed(state_dict, model)
     resize_text_pos_embed(state_dict, model)
+
+    # Fix some size mismatch issues for TULIP by filtering the keys: visual.trunk.pos_embed, text.positional_embedding, and text.token_embedding.weight
+    # This is a temporary fix until we can figure out a better way to handle this
+    if tulip:
+        state_dict = {k: v for k, v in state_dict.items() if 'visual.trunk.pos_embed' not in k and 'text.positional_embedding' not in k and 'text.token_embedding.weight' not in k}
 
     # Finally, load the massaged state_dict into model
     incompatible_keys = model.load_state_dict(state_dict, strict=strict)
@@ -397,17 +403,19 @@ def create_model(
 
         if checkpoint_path:
             logging.info(f'Loading pretrained {model_name} weights ({pretrained}).')
-            load_checkpoint(model, checkpoint_path, weights_only=load_weights_only)
+            load_checkpoint(model, checkpoint_path, weights_only=load_weights_only, tulip='TULIP' in model_name, strict='TULIP' not in model_name)
         else:
             error_str = (
                 f'Pretrained weights ({pretrained}) not found for model {model_name}.'
-                f' Available pretrained tags ({list_pretrained_tags_by_model(model_name)}.')
+                f' Available pretrained tags ({list_pretrained_tags_by_model(model_name)}).'
+                f' If you\'re loading TULIP, this is likely because you need to pass in the correct checkpoint path.'
+            )
             logging.warning(error_str)
             raise RuntimeError(error_str)
         pretrained_loaded = True
     elif has_hf_hub_prefix:
         logging.info(f'Loading pretrained {model_name} weights ({checkpoint_path}).')
-        load_checkpoint(model, checkpoint_path, weights_only=load_weights_only)
+        load_checkpoint(model, checkpoint_path, weights_only=load_weights_only, tulip='TULIP' in model_name, strict='TULIP' not in model_name)
         pretrained_loaded = True
 
     if require_pretrained and not pretrained_loaded:
@@ -491,6 +499,12 @@ def create_model_and_transforms(
         load_weights_only: bool = True,
         **model_kwargs,
 ):
+
+    if 'TULIP' in model_name:
+        # We need to load the WebLI pretrained model as a base, and then load the TULIP model on top of it
+        tulip_checkpoint_path = pretrained
+        pretrained = 'WebLI'
+
     force_preprocess_cfg = merge_preprocess_kwargs(
         {},
         mean=image_mean,
@@ -529,6 +543,12 @@ def create_model_and_transforms(
         pp_cfg,
         is_train=False,
     )
+
+    if 'TULIP' in model_name:
+        # Load the TULIP checkpoint
+        state_dict = torch.load(tulip_checkpoint_path)
+        model.load_state_dict(state_dict, strict=False)
+        model = model.to(device)
 
     return model, preprocess_train, preprocess_val
 
