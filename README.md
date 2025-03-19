@@ -76,7 +76,7 @@ If you use TULIP in your research, please cite the following paper:
 
 ```
 @misc{tang2025tulip,
-  title     = {TULIP: Contrastive Image-Text Learning With Richer Vision Understanding},
+  title     = {TULIP: Towards Unified Language-Image Pretraining},
   author    = {Zineng Tang and Long Lian and Seun Eisape and XuDong Wang and Roei Herzig and Adam Yala and Alane Suhr and Trevor Darrell and David M. Chan},
   institution = {University of California, Berkeley},
   year      = {2025},
