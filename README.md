@@ -1,9 +1,12 @@
 # OpenCLIP + TULIP
 
-This repository is a fork of [OpenCLIP](https://github.com/mlfoundations/open_clip), integrating the **TULIP** enhancements. OpenCLIP is an open-source implementation of OpenAI's CLIP (Contrastive Language-Image Pre-training).
+[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)  [![arXiv](https://img.shields.io/badge/arXiv-2311.16090-red)](https://arxiv.org/abs/2312.08366)
+
+Check out our [project page](https://tulip-berkeley.github.io) for more information/the latest news and links!
+
+This repository is a fork of [OpenCLIP](https://github.com/mlfoundations/open_clip), integrating the **TULIP** model. OpenCLIP is an open-source implementation of OpenAI's CLIP (Contrastive Language-Image Pre-training).
 
 **This code only supports inference of the TULIP models. Training code will be released soon.**
-
 
 ## Features
 
@@ -29,19 +32,11 @@ pip install -e .
 The following models are currently available for inference:
 
 Model Name | Resolution | Checkpoint
---- | --- | --- | ---
+--- | --- | ---
 TULIP-B-16-224 | 224 | Coming Soon
 TULIP-H-14-224 | 224 | Coming Soon
-TULIP-so400m-14-384 | 384 | [Download](https://www.example.com)
-TULIP-G-16-384 | 384 | [Download](https://www.example.com)
-
-
-To load a specific model:
-
-```python
-model, _, preprocess = open_clip.create_model_and_transforms('TULIP-so400m-14-384', pretrained='<path to model checkpoint>')
-```
-
+TULIP-so400m-14-384 | 384 | [Download](https://s3.us-west-1.wasabisys.com/tulip/tulip-so400m-14-384.ckpt)
+TULIP-G-16-384 | 384 | [Download](https://s3.us-west-1.wasabisys.com/tulip/tulip-G-16-384.ckpt)
 
 ## Inference
 
