@@ -1,6 +1,6 @@
 # TULIP: Towards Unified Language-Image Pre-training
 
-[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)  [![arXiv](https://img.shields.io/badge/arXiv-2311.16090-red)](https://arxiv.org/abs/2312.08366)
+[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)  [![arXiv](https://img.shields.io/badge/arXiv-2503.15485-red)](https://arxiv.org/abs/2503.15485)
 
 Check out our [project page](https://tulip-berkeley.github.io) for more information/the latest news and links!
 
