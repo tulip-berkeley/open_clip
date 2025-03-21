@@ -29,7 +29,7 @@ pip install -e .
 
 ## Model Checkpoints
 
-**Note**: We have identified and are currently investigating a critical issue with the checkpoints which may impact the reproducibility of the results. We have made the checkpoints unavailable until we can resolve this issue. 
+**Note**: We have identified and are currently investigating a critical issue which may impact the reproducibility of the results. We have made the checkpoints unavailable until we can resolve this issue. 
 
 The following models are currently available for inference:
 
