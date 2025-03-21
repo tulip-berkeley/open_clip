@@ -29,14 +29,16 @@ pip install -e .
 
 ## Model Checkpoints
 
+**Note**: We are currently investigating a critical issue with the checkpoints which may impact the benchmark results. We have made the checkpoints unavailable until we can resolve this issue. 
+
 The following models are currently available for inference:
 
 Model Name | Resolution | Checkpoint
 --- | --- | ---
 TULIP-B-16-224 | 224 | Coming Soon
 TULIP-H-14-224 | 224 | Coming Soon
-TULIP-so400m-14-384 | 384 | [Download](https://s3.us-west-1.wasabisys.com/tulip/tulip-so400m-14-384.ckpt)
-TULIP-G-16-384 | 384 | [Download](https://s3.us-west-1.wasabisys.com/tulip/tulip-G-16-384.ckpt)
+TULIP-so400m-14-384 | 384 | See Note
+TULIP-G-16-384 | 384 | See Note
 
 ## Inference
 
