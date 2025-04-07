@@ -650,10 +650,10 @@ _PRETRAINED = {
         webli=_slpcfg(hf_hub='timm/ViT-SO400M-14-SigLIP/'),
     ),
     "TULIP-G-16-384": dict(
-        webli=_slpcfg(hf_hub='timm/ViT-SO400M-14-SigLIP/'),
+        webli=_slpcfg(hf_hub='timm/ViT-gopt-16-SigLIP2-384/'),
     ),
     "TULIP-B-16-224": dict(
-        webli=_slpcfg(hf_hub='timm/ViT-SO400M-14-SigLIP/'),
+        webli=_slpcfg(hf_hub='timm/ViT-B-16-SigLIP/'),
     ),
 }
 

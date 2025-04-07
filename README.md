@@ -29,16 +29,18 @@ pip install -e .
 
 ## Model Checkpoints
 
-**Note**: We have identified and are currently investigating a critical issue which may impact the reproducibility of the results. We have made the checkpoints unavailable until we can resolve this issue. 
-
 The following models are currently available for inference:
 
-Model Name | Resolution | Checkpoint
---- | --- | ---
-TULIP-B-16-224 | 224 | Coming Soon
-TULIP-H-14-224 | 224 | Coming Soon
-TULIP-so400m-14-384 | 384 | See Note
-TULIP-G-16-384 | 384 | See Note
+| Model Name                | Resolution | Checkpoint                                                                            |
+| ------------------------- | ---------- | ------------------------------------------------------------------------------------- |
+| TULIP-B-16-224  (SL1)     | 224        | [Download](https://s3.us-west-1.wasabisys.com/tulip/ckpt-s1/tulip-B-16-224.ckpt)      |
+| TULIP-B-16-224  (SL2)     | 224        | [Download](https://s3.us-west-1.wasabisys.com/tulip/ckpt-s2/tulip-B-16-224.ckpt)      |
+| TULIP-so400m-14-384 (SL1) | 384        | [Download](https://s3.us-west-1.wasabisys.com/tulip/ckpt-s1/tulip-so400m-14-384.ckpt) |
+| TULIP-so400m-14-384 (SL2) | 384        | [Download](https://s3.us-west-1.wasabisys.com/tulip/ckpt-s2/tulip-so400m-14-384.ckpt) |
+| TULIP-G-16-384 (SL1)      | 384        | [Download](https://s3.us-west-1.wasabisys.com/tulip/ckpt-s1/tulip-G-16-384.ckpt)      |
+| TULIP-G-16-224 (SL2)      | 384        | [Download](https://s3.us-west-1.wasabisys.com/tulip/ckpt-s2/tulip-G-16-384.ckpt)      |
+
+SL1 and SL2 refer to different initializations of the model, with SL1 initialized from SigLIP 1 and SL2 from SigLIP 2.
 
 ## Inference
 
@@ -67,6 +69,7 @@ with torch.no_grad(), torch.autocast("cuda"):
 
 print("Label probabilities:", similarities)
 ```
+
 
 ## License
 
