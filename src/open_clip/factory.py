@@ -157,9 +157,9 @@ def load_state_dict(
         checkpoint = load_file(checkpoint_path, device=device)
     else:
         try:
-            checkpoint = torch.load(checkpoint_path, map_location=device, weights_only=weights_only)
+            checkpoint = torch.load(checkpoint_path, map_location=device, weights_only=False)
         except TypeError:
-            checkpoint = torch.load(checkpoint_path, map_location=device)
+            checkpoint = torch.load(checkpoint_path, map_location=device, weights_only=False)
 
     if isinstance(checkpoint, dict) and 'state_dict' in checkpoint:
         state_dict = checkpoint['state_dict']
@@ -546,7 +546,7 @@ def create_model_and_transforms(
 
     if 'TULIP' in model_name:
         # Load the TULIP checkpoint
-        state_dict = torch.load(tulip_checkpoint_path)
+        state_dict = torch.load(tulip_checkpoint_path, weights_only=False)
         model.load_state_dict(state_dict, strict=False)
         model = model.to(device)
 
